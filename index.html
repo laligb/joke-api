@@ -3,12 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="public/style.css" />
     <title>Document</title>
   </head>
   <body>
-    <button id="jokeButton" class="btn btn-primary">Next joke</button>
+    <div
+      class="container-fluid d-flex flex-column justify-content-center align-items-center vh-100"
+    >
+      <div
+        class="container bg-white shadow d-flex flex-column justify-content-center align-items-center p-3 container-custom rounded"
+      >
+        <div class="title row mb-5"><h1>Are you ready to laugh? :D</h1></div>
+        <div id="message" class="row text-align-center m-5"></div>
+        <button id="jokeButton" class="btn btn-info text-white row px-5">
+          Next joke
+        </button>
+      </div>
+    </div>
 
-    <div id="message"></div>
     <script type="module" src="build/index.js"></script>
   </body>
 </html>
