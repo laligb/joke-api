@@ -1,3 +1,11 @@
+const buttonElement = document.getElementById("jokeButton");
+const message = document.getElementById("message");
+let reportJokes = [];
+let currentJoke = "";
+let userScore = 0;
+let score1 = document.getElementById("score1");
+let score2 = document.getElementById("score2");
+let score3 = document.getElementById("score3");
 export async function getJoke() {
     const url = "https://icanhazdadjoke.com/";
     try {
@@ -17,28 +25,65 @@ export async function getJoke() {
         return undefined;
     }
 }
-const buttonElement = document.getElementById("jokeButton");
-const message = document.getElementById("message");
-if (message) {
+// Scores
+const resetActiveClass = () => {
+    score1?.classList.remove("btn-danger");
+    score1?.classList.add("btn-warning");
+    score2?.classList.remove("btn-danger");
+    score2?.classList.add("btn-warning");
+    score3?.classList.remove("btn-danger");
+    score3?.classList.add("btn-warning");
+};
+async function getScore(score, n) {
+    score.addEventListener("click", async () => {
+        resetActiveClass();
+        score.classList.add("active");
+        score.classList.remove("btn-warning");
+        score.classList.add("btn-danger");
+        userScore = n;
+    });
+}
+function scores() {
+    if (score1) {
+        resetActiveClass();
+        getScore(score1, 1);
+    }
+    if (score2) {
+        resetActiveClass();
+        getScore(score2, 2);
+    }
+    if (score3) {
+        resetActiveClass();
+        getScore(score3, 3);
+    }
+    return 0;
+}
+// Messages
+async function showMessage(msg) {
     try {
         const joke = await getJoke();
-        message.textContent = joke;
-        console.log(joke);
+        msg.textContent = `"${joke}"`;
+        scores();
+        currentJoke = joke;
     }
     catch (error) {
         console.error(error);
     }
 }
+if (message) {
+    showMessage(message);
+}
 if (buttonElement && message) {
     buttonElement.addEventListener("click", async () => {
-        try {
-            const joke = await getJoke();
-            message.textContent = joke;
-            console.log(joke);
+        showMessage(message);
+        if (currentJoke !== "") {
+            reportJokes.push({
+                joke: currentJoke,
+                score: userScore,
+                date: new Date(),
+            });
         }
-        catch (error) {
-            console.log(error);
-        }
+        console.log(reportJokes);
     });
 }
 else {
