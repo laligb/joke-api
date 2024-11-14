@@ -1,5 +1,50 @@
-const world = "world";
+export async function getJoke() {
+  const url: string = "https://icanhazdadjoke.com/";
+  try {
+    const response = await fetch(url, {
+      headers: {
+        Accept: "application/json",
+      },
+    });
 
-export function hello(who: string = world): string {
-  return `Hello ${who}! `;
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    return data.joke;
+  } catch (error) {
+    console.error("Failed to fetch joke:", error);
+
+    return undefined;
+  }
+}
+
+const buttonElement = document.getElementById("jokeButton");
+const message = document.getElementById("message");
+
+if (message) {
+  try {
+    const joke: string = await getJoke();
+    message.textContent = joke;
+    console.log(joke);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+if (buttonElement && message) {
+  buttonElement.addEventListener("click", async () => {
+    try {
+      const joke: string = await getJoke();
+
+      message.textContent = joke;
+      console.log(joke);
+    } catch (error) {
+      console.log(error);
+    }
+  });
+} else {
+  console.error("Not found");
 }
