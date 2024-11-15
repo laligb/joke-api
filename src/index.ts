@@ -1,6 +1,5 @@
 const buttonElement = document.getElementById("jokeButton");
 const message = document.getElementById("message");
-
 interface reportObject {
   joke: string;
   score: number;
@@ -108,3 +107,40 @@ if (buttonElement && message) {
 } else {
   console.error("Not found");
 }
+
+// Weather API
+export async function getWeather() {
+  let lat: number = 41.39;
+  let lon: number = 2.15;
+  let api: string = "14266b3728f231cd23550d7d89e0977d";
+  const url: string = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api}`;
+
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function displayWeather() {
+  let weatherData = await getWeather();
+  let celsius = document.getElementById("celsius");
+  let weather = document.getElementById("weather");
+
+  if (celsius) {
+    celsius.textContent = (weatherData.main.temp - 273.15).toFixed(0) + " °C";
+  }
+
+  if (weather) {
+    weather.textContent = weatherData.weather[0].main + " | ";
+  }
+}
+
+displayWeather();
