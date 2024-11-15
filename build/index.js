@@ -1,3 +1,4 @@
+"use strict";
 const buttonElement = document.getElementById("jokeButton");
 const message = document.getElementById("message");
 let reportJokes = [];
@@ -6,7 +7,7 @@ let userScore = 0;
 let score1 = document.getElementById("score1");
 let score2 = document.getElementById("score2");
 let score3 = document.getElementById("score3");
-export async function getJoke() {
+async function getJoke() {
     const url = "https://icanhazdadjoke.com/";
     try {
         const response = await fetch(url, {
@@ -61,7 +62,8 @@ function scores() {
 // Messages
 async function showMessage(msg) {
     try {
-        const joke = await getJoke();
+        //const joke: string = await getJoke();
+        const joke = await showJoke();
         msg.textContent = `"${joke}"`;
         scores();
         currentJoke = joke;
@@ -90,7 +92,7 @@ else {
     console.error("Not found");
 }
 // Weather API
-export async function getWeather() {
+async function getWeather() {
     let lat = 41.39;
     let lon = 2.15;
     let api = "14266b3728f231cd23550d7d89e0977d";
@@ -119,4 +121,27 @@ async function displayWeather() {
     }
 }
 displayWeather();
+// Jokes
+async function getNewJoke() {
+    const url = "https://official-joke-api.appspot.com/jokes/random";
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status}`);
+        }
+        const data = await response.json();
+        return data;
+    }
+    catch (error) {
+        console.error(error);
+    }
+}
+async function newJoke() {
+    const joke = await getNewJoke();
+    return joke.setup + " " + joke.punchline;
+}
+async function showJoke() {
+    const randomJoke = Math.random() < 0.5;
+    return randomJoke ? await getJoke() : await newJoke();
+}
 //# sourceMappingURL=index.js.map
