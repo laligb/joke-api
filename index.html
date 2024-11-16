@@ -4,34 +4,56 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="public/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
     <title>Document</title>
   </head>
   <body>
-    <div class="p-2 d-flex justify-content-start">
-      <div id="weather">Weather |</div>
-      <div id="celsius" class="px-1">0</div>
+    <div class="d-flex justify-content-start">
+      <div id="weather"></div>
+      <div id="celsius" class="px-1"></div>
     </div>
     <div
-      class="container-fluid d-flex flex-column justify-content-center align-items-center vh-100"
+      class="container-fluid magicpattern p-5 d-flex flex-column justify-content-center align-items-center vh-100"
     >
       <div
-        class="container bg-white shadow d-flex flex-column justify-content-center align-items-center p-2 container-custom rounded"
+        class="container d-flex flex-column justify-content-center align-items-center p-2 container-custom rounded"
       >
-        <div class="title row mb-3"><h1>Are you ready to laugh? :D</h1></div>
-        <div id="message" class="row text-center my-3 mx-5"></div>
-        <div class="row mb-3">Score the joke:</div>
+        <div class="title row text-white px-5">
+          <h1>Are you ready to laugh?</h1>
+        </div>
+        <div
+          id="message"
+          class="row text-center my-3 mx-5 text-white px-5"
+        ></div>
+        <div class="row mb-3 text-white">Score the joke:</div>
         <div class="row justify-content-center mb-3">
-          <button id="score1" class="btn btn-danger col-3 rounded mx-1">
-            1
+          <button
+            id="score1"
+            class="btn btn-warning col-3 rounded-circle mx-1 d-flex justify-content-center align-items-center"
+          >
+            <i class="bi bi-emoji-frown"></i>
           </button>
-          <button id="score2" class="btn btn-warning col-3 rounded mx-1">
-            2
+          <button
+            id="score2"
+            class="btn btn-warning col-3 rounded-pill mx-1 d-flex justify-content-center align-items-center"
+          >
+            <i class="bi bi-emoji-neutral"></i>
           </button>
-          <button id="score3" class="btn btn-warning col-3 rounded mx-1">
-            3
+          <button
+            id="score3"
+            class="btn btn-warning col-3 rounded-pill mx-1 d-flex justify-content-center align-items-center"
+          >
+            <i class="bi bi-emoji-heart-eyes"></i>
           </button>
         </div>
-        <button id="jokeButton" class="btn btn-info text-white row px-5">
+        <button
+          id="jokeButton"
+          class="btn btn-warning shadow text-dark fw-bold row px-5"
+        >
           Next joke
         </button>
       </div>

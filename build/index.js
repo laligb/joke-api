@@ -28,11 +28,11 @@ async function getJoke() {
 }
 // Scores
 const resetActiveClass = () => {
-    score1?.classList.remove("btn-danger");
+    score1?.classList.remove("btn-info");
     score1?.classList.add("btn-warning");
-    score2?.classList.remove("btn-danger");
+    score2?.classList.remove("btn-info");
     score2?.classList.add("btn-warning");
-    score3?.classList.remove("btn-danger");
+    score3?.classList.remove("btn-info");
     score3?.classList.add("btn-warning");
 };
 async function getScore(score, n) {
@@ -40,7 +40,7 @@ async function getScore(score, n) {
         resetActiveClass();
         score.classList.add("active");
         score.classList.remove("btn-warning");
-        score.classList.add("btn-danger");
+        score.classList.add("btn-info");
         userScore = n;
     });
 }
@@ -114,11 +114,17 @@ async function displayWeather() {
     let weatherData = await getWeather();
     let celsius = document.getElementById("celsius");
     let weather = document.getElementById("weather");
+    console.log(weatherData);
     if (celsius) {
-        celsius.textContent = (weatherData.main.temp - 273.15).toFixed(0) + " °C";
+        celsius.textContent =
+            " | " + (weatherData.main.temp - 273.15).toFixed(0) + " °C";
     }
     if (weather) {
-        weather.textContent = weatherData.weather[0].main + " | ";
+        const iconCode = weatherData.weather[0].icon;
+        console.log(iconCode);
+        const url = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+        console.log(url);
+        weather.style.backgroundImage = `url(${url})`;
     }
 }
 displayWeather();

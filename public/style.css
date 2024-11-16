@@ -4,6 +4,7 @@
  * Copyright 2011-2024 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+@import "bootstrap-icons/font/bootstrap-icons.css";
 :root,
 [data-bs-theme=light] {
   --bs-blue: #0d6efd;
@@ -11844,13 +11845,25 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-body {
-  background-image: url("https://media.istockphoto.com/id/1347652268/es/foto/grupo-de-colegas-celebrando-el-%C3%A9xito.jpg?s=1024x1024&w=is&k=20&c=JVgoD8ciL_-CTek738BK5aHZOWZvtL7I6XxeKSYSDqw=");
-}
-
 .container-custom {
   width: 600px;
   height: 400px;
+}
+
+#weather {
+  width: 30px;
+  height: 30px;
+  background-size: cover;
+  background-position: center;
+}
+
+.magicpattern {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml;utf8,%3Csvg viewBox=%220 0 1000 1000%22 xmlns=%22http:%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cdefs%3E%3CclipPath id=%22a%22%3E%3Cpath fill=%22currentColor%22 d=%22M875.5 610Q762 720 666 809.5t-229.5 60q-133.5-29.5-217-133t-90-238.5Q123 363 208 252.5t228.5-159Q580 45 662 170t204.5 227.5Q989 500 875.5 610Z%22%2F%3E%3C%2FclipPath%3E%3C%2Fdefs%3E%3Cg clip-path=%22url(%23a)%22%3E%3Cpath fill=%22%238f6fa2%22 d=%22M875.5 610Q762 720 666 809.5t-229.5 60q-133.5-29.5-217-133t-90-238.5Q123 363 208 252.5t228.5-159Q580 45 662 170t204.5 227.5Q989 500 875.5 610Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
 }
 
 /*# sourceMappingURL=style.css.map */
