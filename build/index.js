@@ -44,7 +44,8 @@ async function getScore(score, n) {
         userScore = n;
     });
 }
-function scores() {
+const scores = () => {
+    userScore = 0;
     if (score1) {
         resetActiveClass();
         getScore(score1, 1);
@@ -58,7 +59,7 @@ function scores() {
         getScore(score3, 3);
     }
     return 0;
-}
+};
 // Messages
 async function showMessage(msg) {
     try {
