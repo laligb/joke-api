@@ -79,7 +79,6 @@ const scores = () => {
 // Messages
 async function showMessage(msg: HTMLElement) {
   try {
-    //const joke: string = await getJoke();
     const joke: string = await showJoke();
     msg.textContent = `"${joke}"`;
     scores();
@@ -144,9 +143,7 @@ async function displayWeather() {
 
   if (weather) {
     const iconCode: string = weatherData.weather[0].icon;
-    console.log(iconCode);
     const url = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
-    console.log(url);
     weather.style.backgroundImage = `url(${url})`;
   }
 }
@@ -178,5 +175,7 @@ async function newJoke() {
 
 async function showJoke() {
   const randomJoke = Math.random() < 0.5;
-  return randomJoke ? await getJoke() : await newJoke();
+  const joke = randomJoke ? await getJoke() : await newJoke();
+  console.log(joke);
+  return joke;
 }
