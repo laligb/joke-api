@@ -4,6 +4,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "start": "nodemon src/index.ts",
+    "build": "rimraf build && tsc",
+    "ts.check": "tsc --project tsconfig.json",
+    "add-build": "git add build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -17,6 +21,8 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.3",
-    "bootstrap-icons": "^1.11.3"
+    "bootstrap-icons": "^1.11.3",
+    "pre-commit": "^1.2.2",
+    "rimraf": "^5.0.10"
   }
 }
